@@ -15,5 +15,13 @@ unzip pg_postal_code_ca.zip
 
 <h3>Usage</h3>
 <pre>
+testuser=# SELECT 'h2e3f1'::canadian_postal_code;
+ canadian_postal_code
+----------------------
+ H2E 3F1
+(1 row)
 
+testuser=# SELECT 'A2CCF3'::canadian_postal_code;
+ERROR:  invalid input format for candian_postal_code: 'A2CCF3'
+LINE 1: SELECT 'A2CCF3'::canadian_postal_code;
 </pre>
