@@ -1,0 +1,5 @@
+# pg_postal_code_CA extension
+comment = 'an efficient, validated, formatted Canadian postal code type'
+default_version = '1.0'
+module_pathname = '$libdir/pg_postal_code_CA'
+relocatable = true
