@@ -1,0 +1,1 @@
+This type supports efficient, validated, formatted usage of Canadian postal codes. It provides sane ordering functionality through implementation of custom comparison operators.
