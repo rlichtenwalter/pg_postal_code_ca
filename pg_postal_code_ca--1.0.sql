@@ -1,58 +1,58 @@
-CREATE TYPE canadian_postal_code;
+CREATE TYPE postal_code_ca;
 
-CREATE OR REPLACE FUNCTION canadian_postal_code_in( CSTRING )
-	RETURNS canadian_postal_code
+CREATE OR REPLACE FUNCTION postal_code_ca_in( CSTRING )
+	RETURNS postal_code_ca
 	AS 'MODULE_PATHNAME'
 	LANGUAGE C IMMUTABLE STRICT;
 
-CREATE OR REPLACE FUNCTION canadian_postal_code_out( canadian_postal_code )
+CREATE OR REPLACE FUNCTION postal_code_ca_out( postal_code_ca )
 	RETURNS CSTRING
 	AS 'MODULE_PATHNAME'
 	LANGUAGE C IMMUTABLE STRICT;
 
-CREATE TYPE canadian_postal_code (
-	INPUT = canadian_postal_code_in,
-	OUTPUT = canadian_postal_code_out,
+CREATE TYPE postal_code_ca (
+	INPUT = postal_code_ca_in,
+	OUTPUT = postal_code_ca_out,
 	INTERNALLENGTH = 8,
 	PASSEDBYVALUE = FALSE,
 	ALIGNMENT = char,
 	STORAGE = plain
 );
 
-CREATE FUNCTION canadian_postal_code_lt( canadian_postal_code, canadian_postal_code )
+CREATE FUNCTION postal_code_ca_lt( postal_code_ca, postal_code_ca )
 	RETURNS BOOL
 	AS 'MODULE_PATHNAME'
 	LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
 
-CREATE FUNCTION canadian_postal_code_le( canadian_postal_code, canadian_postal_code )
+CREATE FUNCTION postal_code_ca_le( postal_code_ca, postal_code_ca )
 	RETURNS BOOL
 	AS 'MODULE_PATHNAME'
 	LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
 
-CREATE FUNCTION canadian_postal_code_eq( canadian_postal_code, canadian_postal_code )
+CREATE FUNCTION postal_code_ca_eq( postal_code_ca, postal_code_ca )
 	RETURNS BOOL
 	AS 'MODULE_PATHNAME'
 	LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
 
-CREATE FUNCTION canadian_postal_code_ge( canadian_postal_code, canadian_postal_code )
+CREATE FUNCTION postal_code_ca_ge( postal_code_ca, postal_code_ca )
 	RETURNS BOOL
 	AS 'MODULE_PATHNAME'
 	LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
 
-CREATE FUNCTION canadian_postal_code_gt( canadian_postal_code, canadian_postal_code )
+CREATE FUNCTION postal_code_ca_gt( postal_code_ca, postal_code_ca )
 	RETURNS BOOL
 	AS 'MODULE_PATHNAME'
 	LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
 
-CREATE FUNCTION canadian_postal_code_ne( canadian_postal_code, canadian_postal_code )
+CREATE FUNCTION postal_code_ca_ne( postal_code_ca, postal_code_ca )
 	RETURNS BOOL
 	AS 'MODULE_PATHNAME'
 	LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
 
 CREATE OPERATOR < (
-	LEFTARG = canadian_postal_code,
-	RIGHTARG = canadian_postal_code,
-	PROCEDURE = canadian_postal_code_lt,
+	LEFTARG = postal_code_ca,
+	RIGHTARG = postal_code_ca,
+	PROCEDURE = postal_code_ca_lt,
 	COMMUTATOR = >,
 	NEGATOR = >=,
 	RESTRICT = scalarltsel,
@@ -60,9 +60,9 @@ CREATE OPERATOR < (
 );
 
 CREATE OPERATOR <= (
-	LEFTARG = canadian_postal_code,
-	RIGHTARG = canadian_postal_code,
-	PROCEDURE = canadian_postal_code_le,
+	LEFTARG = postal_code_ca,
+	RIGHTARG = postal_code_ca,
+	PROCEDURE = postal_code_ca_le,
 	COMMUTATOR = >=,
 	NEGATOR = >,
 	RESTRICT = scalarltsel,
@@ -70,9 +70,9 @@ CREATE OPERATOR <= (
 );
 
 CREATE OPERATOR = (
-	LEFTARG = canadian_postal_code,
-	RIGHTARG = canadian_postal_code,
-	PROCEDURE = canadian_postal_code_eq,
+	LEFTARG = postal_code_ca,
+	RIGHTARG = postal_code_ca,
+	PROCEDURE = postal_code_ca_eq,
 	COMMUTATOR = =,
 	NEGATOR = <>,
 	RESTRICT = eqsel,
@@ -80,9 +80,9 @@ CREATE OPERATOR = (
 );
 
 CREATE OPERATOR >= (
-	LEFTARG = canadian_postal_code,
-	RIGHTARG = canadian_postal_code,
-	PROCEDURE = canadian_postal_code_ge,
+	LEFTARG = postal_code_ca,
+	RIGHTARG = postal_code_ca,
+	PROCEDURE = postal_code_ca_ge,
 	COMMUTATOR = <=,
 	NEGATOR = <,
 	RESTRICT = scalargtsel,
@@ -90,9 +90,9 @@ CREATE OPERATOR >= (
 );
 
 CREATE OPERATOR > (
-	LEFTARG = canadian_postal_code,
-	RIGHTARG = canadian_postal_code,
-	PROCEDURE = canadian_postal_code_gt,
+	LEFTARG = postal_code_ca,
+	RIGHTARG = postal_code_ca,
+	PROCEDURE = postal_code_ca_gt,
 	COMMUTATOR = <,
 	NEGATOR = <=,
 	RESTRICT = scalargtsel,
@@ -100,25 +100,25 @@ CREATE OPERATOR > (
 );
 
 CREATE OPERATOR <> (
-	LEFTARG = canadian_postal_code,
-	RIGHTARG = canadian_postal_code,
-	PROCEDURE = canadian_postal_code_ne,
+	LEFTARG = postal_code_ca,
+	RIGHTARG = postal_code_ca,
+	PROCEDURE = postal_code_ca_ne,
 	COMMUTATOR = <>,
 	NEGATOR = =,
 	RESTRICT = neqsel,
 	JOIN = neqjoinsel
 );
 
-CREATE FUNCTION canadian_postal_code_cmp( canadian_postal_code, canadian_postal_code )
+CREATE FUNCTION postal_code_ca_cmp( postal_code_ca, postal_code_ca )
 	RETURNS INTEGER
 	AS 'MODULE_PATHNAME'
 	LANGUAGE C IMMUTABLE STRICT PARALLEL SAFE;
 
-CREATE OPERATOR CLASS canadian_postal_code_ops
-	DEFAULT FOR TYPE canadian_postal_code USING BTREE AS
+CREATE OPERATOR CLASS postal_code_ca_ops
+	DEFAULT FOR TYPE postal_code_ca USING BTREE AS
 	OPERATOR 1 <,
 	OPERATOR 2 <=,
 	OPERATOR 3 =,
 	OPERATOR 4 >=,
 	OPERATOR 5 >,
-	FUNCTION 1 canadian_postal_code_cmp( canadian_postal_code, canadian_postal_code );
+	FUNCTION 1 postal_code_ca_cmp( postal_code_ca, postal_code_ca );
