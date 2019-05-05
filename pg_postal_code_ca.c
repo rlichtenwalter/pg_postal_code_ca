@@ -13,8 +13,8 @@ PG_MODULE_MAGIC;
 #define NUM_CAPTURES 16
 #define MESSAGE_BUFFER_SIZE 256
 
-PG_FUNCTION_INFO_V1( canadian_postal_code_in );
-Datum canadian_postal_code_in( PG_FUNCTION_ARGS ) {
+PG_FUNCTION_INFO_V1( postal_code_ca_in );
+Datum postal_code_ca_in( PG_FUNCTION_ARGS ) {
 	char const * str;
 	char const * regex_str;
 	regex_t regex;
@@ -53,15 +53,15 @@ Datum canadian_postal_code_in( PG_FUNCTION_ARGS ) {
 	regfree( &regex );
 }
 
-PG_FUNCTION_INFO_V1( canadian_postal_code_out );
-Datum canadian_postal_code_out( PG_FUNCTION_ARGS ) {
-	char const * canadian_postal_code;
-	canadian_postal_code = PG_GETARG_CSTRING( 0 );
-	PG_RETURN_CSTRING( canadian_postal_code );
+PG_FUNCTION_INFO_V1( postal_code_ca_out );
+Datum postal_code_ca_out( PG_FUNCTION_ARGS ) {
+	char const * postal_code_ca;
+	postal_code_ca = PG_GETARG_CSTRING( 0 );
+	PG_RETURN_CSTRING( postal_code_ca );
 }
 
-PG_FUNCTION_INFO_V1( canadian_postal_code_cmp );
-Datum canadian_postal_code_cmp( PG_FUNCTION_ARGS ) {
+PG_FUNCTION_INFO_V1( postal_code_ca_cmp );
+Datum postal_code_ca_cmp( PG_FUNCTION_ARGS ) {
 	char const * a;
 	char const * b;
 	a = PG_GETARG_CSTRING( 0 );
@@ -69,8 +69,8 @@ Datum canadian_postal_code_cmp( PG_FUNCTION_ARGS ) {
 	PG_RETURN_INT32( strcmp( a, b ) );
 }
 
-PG_FUNCTION_INFO_V1( canadian_postal_code_lt );
-Datum canadian_postal_code_lt( PG_FUNCTION_ARGS ) {
+PG_FUNCTION_INFO_V1( postal_code_ca_lt );
+Datum postal_code_ca_lt( PG_FUNCTION_ARGS ) {
 	char const * a;
 	char const * b;
 	a = PG_GETARG_CSTRING( 0 );
@@ -78,8 +78,8 @@ Datum canadian_postal_code_lt( PG_FUNCTION_ARGS ) {
 	PG_RETURN_BOOL( strcmp( a, b ) < 0 );
 }
 
-PG_FUNCTION_INFO_V1( canadian_postal_code_le );
-Datum canadian_postal_code_le( PG_FUNCTION_ARGS ) {
+PG_FUNCTION_INFO_V1( postal_code_ca_le );
+Datum postal_code_ca_le( PG_FUNCTION_ARGS ) {
 	char const * a;
 	char const * b;
 	a = PG_GETARG_CSTRING( 0 );
@@ -87,8 +87,8 @@ Datum canadian_postal_code_le( PG_FUNCTION_ARGS ) {
 	PG_RETURN_BOOL( strcmp( a, b ) <= 0 );
 }
 
-PG_FUNCTION_INFO_V1( canadian_postal_code_eq );
-Datum canadian_postal_code_eq( PG_FUNCTION_ARGS ) {
+PG_FUNCTION_INFO_V1( postal_code_ca_eq );
+Datum postal_code_ca_eq( PG_FUNCTION_ARGS ) {
 	char const * a;
 	char const * b;
 	a = PG_GETARG_CSTRING( 0 );
@@ -96,8 +96,8 @@ Datum canadian_postal_code_eq( PG_FUNCTION_ARGS ) {
 	PG_RETURN_BOOL( strcmp( a, b ) == 0 );
 }
 
-PG_FUNCTION_INFO_V1( canadian_postal_code_ge );
-Datum canadian_postal_code_ge( PG_FUNCTION_ARGS ) {
+PG_FUNCTION_INFO_V1( postal_code_ca_ge );
+Datum postal_code_ca_ge( PG_FUNCTION_ARGS ) {
 	char const * a;
 	char const * b;
 	a = PG_GETARG_CSTRING( 0 );
@@ -105,8 +105,8 @@ Datum canadian_postal_code_ge( PG_FUNCTION_ARGS ) {
 	PG_RETURN_BOOL( strcmp( a, b ) >= 0 );
 }
 
-PG_FUNCTION_INFO_V1( canadian_postal_code_gt );
-Datum canadian_postal_code_gt( PG_FUNCTION_ARGS ) {
+PG_FUNCTION_INFO_V1( postal_code_ca_gt );
+Datum postal_code_ca_gt( PG_FUNCTION_ARGS ) {
 	char const * a;
 	char const * b;
 	a = PG_GETARG_CSTRING( 0 );
@@ -114,8 +114,8 @@ Datum canadian_postal_code_gt( PG_FUNCTION_ARGS ) {
 	PG_RETURN_BOOL( strcmp( a, b ) > 0 );
 }
 
-PG_FUNCTION_INFO_V1( canadian_postal_code_ne );
-Datum canadian_postal_code_ne( PG_FUNCTION_ARGS ) {
+PG_FUNCTION_INFO_V1( postal_code_ca_ne );
+Datum postal_code_ca_ne( PG_FUNCTION_ARGS ) {
 	char const * a;
 	char const * b;
 	a = PG_GETARG_CSTRING( 0 );
